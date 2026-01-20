@@ -1,2 +1,2 @@
 # Rust-Projects
-This repository contains all projects related to rust will I did in my off hours apart from office work
+A collection of Rust projects developed during my personal time to explore the language and improve my skills outside of professional work.
