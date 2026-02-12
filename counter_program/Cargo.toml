@@ -1,0 +1,24 @@
+[package]
+name = "counter_program"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+borsh = { workspace = true }
+solana-instruction = { workspace = true }
+solana-program = { workspace = true }
+solana-system-interface = { workspace = true }
+
+[lib]
+crate-type = ["cdylib", "lib"]
+
+[dev-dependencies]
+litesvm = { workspace = true }
+solana-client = { workspace = true }
+solana-sdk = { workspace = true }
+solana-sdk-ids = { workspace = true }
+tokio = { workspace = true }
+
+[[example]]
+name = "client"
+path = "examples/client.rs"

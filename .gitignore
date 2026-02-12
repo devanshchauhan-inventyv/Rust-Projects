@@ -1,0 +1,14 @@
+# Rust
+target/
+**/*.rs.bk
+*.pdb
+/Cargo.lock
+/*/Cargo.lock
+
+# Solana
+test-ledger/
+.anchor/
+.deploy/
+*.so
+*.keypair
+!localnet.keypair
