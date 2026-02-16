@@ -7,7 +7,7 @@ edition = "2024"
 borsh = { workspace = true }
 solana-instruction = { workspace = true }
 solana-program = { workspace = true }
-solana-system-interface = { workspace = true }
+solana-system-interface = { workspace = true, features = ["bincode"] }
 
 [lib]
 crate-type = ["cdylib", "lib"]

@@ -140,7 +140,7 @@ mod test {
         let program_keypair = Keypair::new();
         let program_id = program_keypair.pubkey();
 
-        svm.add_program_from_file(program_id, "/counter_program/target/deploy/counter_program.so")
+        svm.add_program_from_file(program_id, "../target/deploy/counter_program.so")
             .expect("Failed to add program");
 
         let counter_keypair = Keypair::new();
