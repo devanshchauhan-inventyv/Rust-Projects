@@ -43,8 +43,8 @@ fn process_initialize_counter(
 ) -> ProgramResult {
     let accounts_iter = &mut accounts.iter();
 
-    let payer_account = next_account_info(accounts_iter)?;
     let counter_account = next_account_info(accounts_iter)?;
+    let payer_account = next_account_info(accounts_iter)?;
     let system_account = next_account_info(accounts_iter)?;
 
     let account_space = 8;
@@ -156,8 +156,8 @@ mod test {
             program_id,
             &init_instruction_data,
             vec![
-                AccountMeta::new(payer.pubkey(), true),
                 AccountMeta::new(counter_keypair.pubkey(), true),
+                AccountMeta::new(payer.pubkey(), true),
                 AccountMeta::new_readonly(system_program::id(), false),
             ],
         );
