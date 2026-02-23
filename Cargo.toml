@@ -1,6 +1,7 @@
 [workspace]
 members = [
-    "counter_program"
+    "counter_program",
+    "anchor_counter_program/programs/anchor_counter_program",  # anchor program path for rust analyzer to work in workspace setting
 ]
 resolver = "2"
 

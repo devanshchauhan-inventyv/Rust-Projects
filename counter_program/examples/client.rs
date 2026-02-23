@@ -82,9 +82,7 @@ async fn main() {
     let increment_instruction = Instruction::new_with_bytes(
         program_id,
         &increment_data,
-        vec![
-            AccountMeta::new(counter_keypair.pubkey(), true),
-        ],
+        vec![AccountMeta::new(counter_keypair.pubkey(), true)],
     );
 
     let increment_transaction = Transaction::new_signed_with_payer(

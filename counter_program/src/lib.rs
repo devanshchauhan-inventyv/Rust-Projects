@@ -121,8 +121,7 @@ mod test {
     use litesvm::LiteSVM;
     use solana_instruction::{AccountMeta, Instruction};
     use solana_sdk::{
-        message::Message, signature::Keypair, signer::Signer,
-        transaction::Transaction,
+        message::Message, signature::Keypair, signer::Signer, transaction::Transaction,
     };
     use solana_sdk_ids::system_program;
 
@@ -186,7 +185,7 @@ mod test {
         let counter: CounterAccount = CounterAccount::try_from_slice(&account.data)
             .expect("Failed to deserialize counter data");
 
-        assert_eq!(counter.count, 42);
+        assert_eq!(counter.count, initial_value);
         println!(
             "Counter initialized successfully with value: {}",
             counter.count

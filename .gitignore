@@ -12,3 +12,6 @@ test-ledger/
 *.so
 *.keypair
 !localnet.keypair
+node_modules
+.yarn
+yarn.lock
