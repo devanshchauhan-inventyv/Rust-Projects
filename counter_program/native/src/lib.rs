@@ -1,4 +1,3 @@
-#![allow(unexpected_cfgs)]
 use borsh::{BorshDeserialize, BorshSerialize};
 use solana_program::{
     account_info::{AccountInfo, next_account_info},
@@ -11,7 +10,6 @@ use solana_program::{
     rent::Rent,
     sysvar::Sysvar,
 };
-use solana_system_interface::instruction::create_account;
 
 entrypoint!(process_instruction);
 
@@ -53,7 +51,7 @@ fn process_initialize_counter(
     let required_lamports = rent.minimum_balance(account_space);
 
     invoke(
-        &create_account(
+        &solana_system_interface::instruction::create_account(
             payer_account.key,
             counter_account.key,
             required_lamports,
@@ -123,7 +121,6 @@ mod test {
     use solana_sdk::{
         message::Message, signature::Keypair, signer::Signer, transaction::Transaction,
     };
-    use solana_sdk_ids::system_program;
 
     use crate::{CounterAccount, CounterInstruction};
 
@@ -139,7 +136,7 @@ mod test {
         let program_keypair = Keypair::new();
         let program_id = program_keypair.pubkey();
 
-        svm.add_program_from_file(program_id, "../target/deploy/counter_program.so")
+        svm.add_program_from_file(program_id, "../../target/deploy/counter_program.so")
             .expect("Failed to add program");
 
         let counter_keypair = Keypair::new();
@@ -157,7 +154,7 @@ mod test {
             vec![
                 AccountMeta::new(counter_keypair.pubkey(), true),
                 AccountMeta::new(payer.pubkey(), true),
-                AccountMeta::new_readonly(system_program::id(), false),
+                AccountMeta::new_readonly(solana_system_interface::program::ID, false),
             ],
         );
 

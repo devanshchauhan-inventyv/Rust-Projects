@@ -5,19 +5,28 @@ edition = "2024"
 
 [dependencies]
 borsh = { workspace = true }
-solana-instruction = { workspace = true }
 solana-program = { workspace = true }
 solana-system-interface = { workspace = true, features = ["bincode"] }
+
+[features]
+custom-heap = []
+custom-panic = []
 
 [lib]
 crate-type = ["cdylib", "lib"]
 
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = [
+    'cfg(target_os, values("solana"))',
+] }
+
 [dev-dependencies]
-litesvm = { workspace = true }
-solana-client = { workspace = true }
-solana-sdk = { workspace = true }
-solana-sdk-ids = { workspace = true }
-tokio = { workspace = true }
+litesvm = "0.9.1"
+solana-instruction = "3.1.0"
+solana-client = "3.1.8"
+solana-sdk = "3.0.0"
+tokio = "1.49.0"
+
 
 [[example]]
 name = "client"

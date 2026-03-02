@@ -4,12 +4,11 @@ use counter_program::CounterInstruction;
 use solana_client::{rpc_client::RpcClient, rpc_config::CommitmentConfig};
 use solana_instruction::{AccountMeta, Instruction};
 use solana_sdk::{
-    pubkey::{Pubkey, PubkeyError},
+    pubkey::{Pubkey},
     signature::Keypair,
     signer::Signer,
     transaction::Transaction,
 };
-use solana_sdk_ids::system_program;
 
 #[tokio::main]
 async fn main() {
@@ -51,7 +50,7 @@ async fn main() {
         vec![
             AccountMeta::new(counter_keypair.pubkey(), true),
             AccountMeta::new(payer.pubkey(), true),
-            AccountMeta::new_readonly(system_program::id(), false),
+            AccountMeta::new_readonly(solana_system_interface::program::ID, false),
         ],
     );
 

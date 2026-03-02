@@ -1,23 +1,20 @@
 [workspace]
 members = [
-    "counter_program",
-    "anchor_counter_program/programs/anchor_counter_program",  # anchor program path for rust analyzer to work in workspace setting
+    "counter_program/native",
+    "counter_program/anchor/programs/*",
+    "account-data/native/program",
+
 ]
 resolver = "2"
 
 # Shared dependencies across all projects
 [workspace.dependencies]
 borsh = "1.6.0"
-solana-instruction = "3.1.0"
 solana-program = "3.0.0"
-solana-system-interface = "3.0.0"
+solana-system-interface = {version="3.0.0",features = ["bincode"] }
 
-# Shared dev-dependencies across all projects
-litesvm = "0.9.1"
-solana-client = "3.1.8"
-solana-sdk = "3.0.0"
-solana-sdk-ids = "3.1.0"
-tokio = "1.49.0"
+anchor-lang = "0.32.1"
+
 
 # Shared profile settings
 [profile.release]
