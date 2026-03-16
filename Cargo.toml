@@ -4,7 +4,8 @@ members = [
     "counter_program/anchor/programs/*",
     "account-data/native/program",
     "account-data/anchor/programs/*",
-    "checking-accounts/native/program"
+    "checking-accounts/native/program",
+    "checking-accounts/anchor/programs/*"
 
 ]
 resolver = "2"
