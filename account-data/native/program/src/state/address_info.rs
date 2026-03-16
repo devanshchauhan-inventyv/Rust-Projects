@@ -1,6 +1,6 @@
 use borsh::{BorshDeserialize, BorshSerialize};
 
-#[derive(BorshDeserialize,BorshSerialize,Debug)]
+#[derive(BorshDeserialize, BorshSerialize, Debug)]
 pub struct AddressInfo {
     pub name: String,
     pub house_number: u8,

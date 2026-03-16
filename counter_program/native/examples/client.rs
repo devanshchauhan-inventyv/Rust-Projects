@@ -3,12 +3,7 @@ use std::str::FromStr;
 use counter_program::CounterInstruction;
 use solana_client::{rpc_client::RpcClient, rpc_config::CommitmentConfig};
 use solana_instruction::{AccountMeta, Instruction};
-use solana_sdk::{
-    pubkey::{Pubkey},
-    signature::Keypair,
-    signer::Signer,
-    transaction::Transaction,
-};
+use solana_sdk::{pubkey::Pubkey, signature::Keypair, signer::Signer, transaction::Transaction};
 
 #[tokio::main]
 async fn main() {

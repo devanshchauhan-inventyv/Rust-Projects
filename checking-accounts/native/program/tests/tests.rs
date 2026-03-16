@@ -41,16 +41,23 @@ fn test_checking_accounts() {
 
     assert!(svm.send_transaction(tx).is_ok());
 
+    let main_create_ix = Instruction::new_with_borsh(
+        program_id,
+        &vec![0],
+        vec![
+            AccountMeta::new(payer.pubkey(), true),
+            AccountMeta::new(account_to_create.pubkey(), true),
+            AccountMeta::new(account_to_change.pubkey(), true),
+            AccountMeta::new_readonly(solana_system_interface::program::ID, false),
+        ],
+    );
 
-    let main_create_ix = Instruction::new_with_borsh(program_id, &vec![0],vec![
-        AccountMeta::new(payer.pubkey(), true),
-        AccountMeta::new(account_to_create.pubkey(), true),
-        AccountMeta::new(account_to_change.pubkey(), true),
-        AccountMeta::new_readonly(solana_system_interface::program::ID, false)
-    ]);
-
-    let main_create_tx = Transaction::new_signed_with_payer(&[main_create_ix], Some(&payer.pubkey()), &[&payer,&account_to_change, &account_to_create], svm.latest_blockhash());
-
+    let main_create_tx = Transaction::new_signed_with_payer(
+        &[main_create_ix],
+        Some(&payer.pubkey()),
+        &[&payer, &account_to_change, &account_to_create],
+        svm.latest_blockhash(),
+    );
 
     assert!(svm.send_transaction(main_create_tx).is_ok());
 }

@@ -1,12 +1,15 @@
 use solana_program::{
-    account_info::{AccountInfo,next_account_info}, entrypoint, entrypoint::ProgramResult, program_error::ProgramError,
+    account_info::{AccountInfo, next_account_info},
+    entrypoint,
+    entrypoint::ProgramResult,
+    msg,
+    program_error::ProgramError,
     pubkey::Pubkey,
-    msg
 };
 
 entrypoint!(process_instruction);
 
-//This program is a simple example of how to create a new account and change an existing account's data. 
+//This program is a simple example of how to create a new account and change an existing account's data.
 //It does not do anything useful, but it serves as a starting point for learning how to write Solana programs and validate it in native rust coding.
 fn process_instruction(
     program_id: &Pubkey,
@@ -29,12 +32,10 @@ fn process_instruction(
     let account_to_change = next_account_info(accounts_iter)?;
     let system_program = next_account_info(accounts_iter)?;
 
-
     if account_to_create.lamports() != 0 {
         msg!("The program expected the account_to_create to not yet be initialized");
         return Err(ProgramError::AccountAlreadyInitialized);
     }
-
 
     if account_to_change.lamports() == 0 {
         msg!("The program ewxpected account_to_change to be already initialized");
@@ -45,21 +46,21 @@ fn process_instruction(
         return Err(ProgramError::MissingRequiredSignature);
     }
 
-    if !account_to_change.is_writable{
+    if !account_to_change.is_writable {
         return Err(ProgramError::InvalidAccountData);
     }
 
-    if !account_to_create.is_signer{
+    if !account_to_create.is_signer {
         return Err(ProgramError::MissingRequiredSignature);
     }
 
     if account_to_change.owner != program_id {
-          msg!("Account to change does not have the correct program id.");
+        msg!("Account to change does not have the correct program id.");
         return Err(ProgramError::IncorrectProgramId);
     }
 
     if system_program.key != &solana_system_interface::program::ID {
-        return Err(ProgramError::IncorrectProgramId)
+        return Err(ProgramError::IncorrectProgramId);
     }
 
     Ok(())

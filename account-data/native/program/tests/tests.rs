@@ -17,8 +17,11 @@ fn test_account_data() {
 
     svm.airdrop(&payer.pubkey(), LAMPORTS_PER_SOL * 10).unwrap();
 
-    svm.add_program_from_file(program_id.pubkey(), "../../../target/deploy/account_data.so")
-        .unwrap();
+    svm.add_program_from_file(
+        program_id.pubkey(),
+        "../../../target/deploy/account_data.so",
+    )
+    .unwrap();
 
     let instruction_data = borsh::to_vec(&AddressInfo {
         name: "Devansh Chauhan".to_string(),

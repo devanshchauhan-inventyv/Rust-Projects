@@ -3,7 +3,7 @@ use anchor_lang::prelude::*;
 pub mod constants;
 pub mod instructions;
 pub mod state;
-//This is below re-export is added to remove a error for program macro code generation , 
+//This is below re-export is added to remove a error for program macro code generation ,
 //as its confuses the path when using sub-module,so need to re-export at crate root.
 pub use crate::state::*;
 declare_id!("3pEVYJLrLesGxAHj86Nk9iWoneK7FuMwqQ6BvpzkdvZb");
