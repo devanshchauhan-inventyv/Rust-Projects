@@ -2,8 +2,7 @@
 target/
 **/*.rs.bk
 *.pdb
-/Cargo.lock
-/*/Cargo.lock
+**/Cargo.lock
 
 # Solana
 test-ledger/
