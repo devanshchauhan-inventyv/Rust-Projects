@@ -12,13 +12,7 @@ declare_id!("3pEVYJLrLesGxAHj86Nk9iWoneK7FuMwqQ6BvpzkdvZb");
 pub mod account_data_anchor {
     use super::*;
 
-    pub fn create_address_acc(
-        ctx: Context<CreateAddressInfo>,
-        name: String,
-        house_number: u8,
-        street: String,
-        city: String,
-    ) -> Result<()> {
+    pub fn create_address_acc(ctx: Context<CreateAddressInfo>, name: String, house_number: u8, street: String, city: String) -> Result<()> {
         instructions::create_address_info(ctx, name, street, house_number, city)
     }
 }

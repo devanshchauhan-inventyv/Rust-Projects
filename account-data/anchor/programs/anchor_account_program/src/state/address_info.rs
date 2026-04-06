@@ -25,11 +25,6 @@ pub struct AddressInfo {
 
 impl AddressInfo {
     pub fn new(name: String, house_number: u8, street: String, city: String) -> Self {
-        AddressInfo {
-            name,
-            house_number,
-            street,
-            city,
-        }
+        AddressInfo { name, house_number, street, city }
     }
 }

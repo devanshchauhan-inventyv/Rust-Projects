@@ -5,7 +5,8 @@ members = [
     "account-data/native/program",
     "account-data/anchor/programs/*",
     "checking-accounts/native/program",
-    "checking-accounts/anchor/programs/*"
+    "checking-accounts/anchor/programs/*",
+    "close-account/native/program"
 
 ]
 resolver = "2"

@@ -29,7 +29,7 @@ pub struct CheckingAccounts<'info> {
         constraint = account_to_change.lamports() > 0 @ CustomError::Uninitialized
     )]
     pub account_to_change: AccountInfo<'info>,
-    pub system_program : Program<'info, System>
+    pub system_program: Program<'info, System>,
 }
 
 #[error_code]

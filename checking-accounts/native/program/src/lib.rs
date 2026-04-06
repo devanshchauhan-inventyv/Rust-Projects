@@ -11,11 +11,7 @@ entrypoint!(process_instruction);
 
 //This program is a simple example of how to create a new account and change an existing account's data.
 //It does not do anything useful, but it serves as a starting point for learning how to write Solana programs and validate it in native rust coding.
-fn process_instruction(
-    program_id: &Pubkey,
-    accounts: &[AccountInfo],
-    _instruction_data: &[u8],
-) -> ProgramResult {
+fn process_instruction(program_id: &Pubkey, accounts: &[AccountInfo], _instruction_data: &[u8]) -> ProgramResult {
     if solana_system_interface::program::check_id(program_id) {
         return Err(ProgramError::IncorrectProgramId);
     }
