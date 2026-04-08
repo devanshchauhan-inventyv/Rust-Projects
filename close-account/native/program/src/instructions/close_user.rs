@@ -1,8 +1,8 @@
 use solana_program::{
     account_info::{AccountInfo, next_account_info},
     entrypoint::ProgramResult,
-    pubkey::Pubkey,
     program_error::ProgramError,
+    pubkey::Pubkey,
 };
 
 pub fn close_user(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {

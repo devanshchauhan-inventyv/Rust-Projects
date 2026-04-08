@@ -1,12 +1,5 @@
-fn_params_layout="Compressed"
-# fn_call_width=500
-# max_width=500
-
-fn_call_width=2000
-max_width=2000
-
-single_line_if_else_max_width = 300
-struct_lit_width = 220
-struct_variant_width = 220
-array_width = 220
-chain_width = 220
+# Recommended for Solana/Anchor projects
+max_width = 100
+edition = "2021"
+reorder_imports = true
+reorder_modules = true

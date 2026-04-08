@@ -15,7 +15,10 @@ pub mod anchor_counter_program {
 
     pub fn increment_counter(ctx: Context<IncrementCounter>) -> Result<()> {
         let counter = &mut ctx.accounts.counter;
-        counter.data = counter.data.checked_add(1).ok_or(ProgramError::ArithmeticOverflow)?;
+        counter.data = counter
+            .data
+            .checked_add(1)
+            .ok_or(ProgramError::ArithmeticOverflow)?;
         Ok(())
     }
 }
